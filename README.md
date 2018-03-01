@@ -9,6 +9,8 @@ If you're confused on how to use restructured text, anything you're likely needi
 
 Using [Sphinx](http://www.sphinx-doc.org/en/master/) you can build very nice HTML or a PDF from the [restructured text](http://www.sphinx-doc.org/en/master/rest.html).
 
+### This Repo's Hierarchy 
+
 Each Solution Brief is contained in a separate directory.
 
 You can build HTML for all of the Solution Briefs combined, or you can change into the directory of a specific Solution Brief and just build the HTML for that Solution Brief.
@@ -19,7 +21,7 @@ You will need [Sphinx](http://www.sphinx-doc.org/en/master/) and the Sphinx [sph
 
 ### Install Sphinx
 
-You can install Sphinx and the **sphinx_rtd_theme** HTML theme using python [pip](https://pip.pypa.io/en/stable/installing/):
+You can install Sphinx and the **sphinx_rtd_theme** HTML theme using python pip. If you do not have pip you can download and install it from here: [pip](https://pip.pypa.io/en/stable/installing/).
 
 ```bash
 pip install sphinx
@@ -56,11 +58,11 @@ Note: The PDF will wrap *long* commands/definitions and place a *continuation* c
 
 To build a PDF issue the command: ``make clean && make latexpdf``.
 
-The PDF file will be placed in the `~builds/latex` directory.
+The PDF file will be placed in the `_builds/latex` directory.
 
 ### Adding your own Solution Brief to this repo
 
-**Note: Do not modify anything in the `common` directory unless you know what you are doing and have a good reason to do so.  It contains common definitions shared by all Solution Briefs so that all share the same HTML theme, look and feel.**
+**Note: Do not modify anything in the `common` directory of this repo unless you know what you are doing and have a good reason to do so.  It contains common definitions shared by all Solution Briefs so that all share the same HTML theme, look and feel.**
 
 To add your own Solution Brief to this repo:
 
@@ -88,7 +90,7 @@ This is the link to a reference for Sphinx [restructured text](http://www.sphinx
 4. You can build HTML by running this command:
 
     ```bash
-    make clean;make html
+    make clean && make html
     ```
 
 5. The html will be in the _build/html directory
@@ -99,12 +101,10 @@ This is the link to a reference for Sphinx [restructured text](http://www.sphinx
 
 7. If you want to include your Solution Brief in with the entire build:
 
-    * Edit the file ./index.rst in the base directory of this repo. **Be Careful**
-    * Append your entry to the end.
+    * Edit the file ./index.rst in the base directory of this repo. **Be Careful!**
+    * Append your entry to the end. Assuming your directory is `logging_xyz_product` add this: `logging_xyz_product/index`.
       
-        logging_xyz_product/index
-
-    ./index.rst before:
+    **./index.rst before:**
 
     ```
     ..  _docker_ee_solution_briefs:
@@ -125,7 +125,7 @@ This is the link to a reference for Sphinx [restructured text](http://www.sphinx
         
     ```
 
-    ./index.rst after:
+    **./index.rst after:**
 
     ```
     ..  _docker_ee_solution_briefs:
@@ -149,12 +149,13 @@ This is the link to a reference for Sphinx [restructured text](http://www.sphinx
 8. Then build the HTML from the base directory of the repo and make sure it builds without errors.
 
     ```bash
-    make clean;make html
+    make clean && make html
     ```
 
 There is a Sphinx configuration file in your directory named conf.py.
 
- It includes base configuration shared by all Solution Briefs from the common/config.py file.
+ It includes the common/config.py file which contains the base configuration shared by all Solution Briefs.
+
  Do not modify the config.py in this repo's `common` directory as it is shared by every Solution Brief and contains definitions so all of the Solution Briefs look the same when formatted to HTML or PDFs.
 
  You should not need to modify the conf.py file in your own directory unless you want to build a PDF.
@@ -172,6 +173,16 @@ There is a Sphinx configuration file in your directory named conf.py.
      u'Gary Forghetti', 'manual'),
    ]
    ``` 
+
+Then to make a PDF inside your directory for your Solution Brief:
+
+    ```bash
+    make clean && make latexpdf
+    ```
+
+The PDF will be in the `_builds/latex` directory inside your Solution Brief directory.   
+
+Any questions, contact me.
 
 Gary Forghetti\
 Business Development\
