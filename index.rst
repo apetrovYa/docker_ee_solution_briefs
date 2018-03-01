@@ -9,7 +9,7 @@ Docker EE Solution Briefs
     :titlesonly:
     :maxdepth: 1
 
-    monitoring_grafana_prometheus/index
-    logging_elk/index
-    logging_splunk/index
-    monitoring_splunk_windows_containers_and_logs/index
+    docker_ee_monitoring_grafana_prometheus/index
+    docker_ee_logging_elk/index
+    docker_ee_logging_splunk/index
+    docker_ee_monitoring_splunk_windows_containers_and_logs/index
