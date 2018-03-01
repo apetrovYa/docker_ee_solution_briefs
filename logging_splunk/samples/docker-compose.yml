@@ -1,0 +1,66 @@
+version: '3.3'
+
+# Note: Do not put quotes around the SPLUNK environment variables!
+
+networks:
+  splunk-backend:
+    driver: overlay
+    attachable: true
+
+volumes:
+  splunk-etc:
+  splunk-var: 
+           
+services:
+   
+  splunk-enterprise:
+    image: splunk/splunk:7.0.0-monitor
+    hostname: splunk-enterprise
+    networks:
+      - splunk-backend  
+    deploy:
+        placement:
+            constraints: [node.role==manager]  
+    ports:
+      - "8000:8000"
+      - "8088:8088"
+    environment:
+      - SPLUNK_USER=root
+      - SPLUNK_START_ARGS=--accept-license --answer-yes
+      - SPLUNK_ENABLE_DEPLOY_SERVER=true
+      - SPLUNK_ENABLE_DEPLOY_SERVER=splunk-enterprise:8089
+      - SPLUNK_ENABLE_LISTEN=9997  
+    volumes:
+      - splunk-etc:/opt/splunk/etc
+      - splunk-var:/opt/splunk/var
+      - /var/lib/docker/containers:/host/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/log:/docker/log:ro  
+
+  splunk-forwarder:
+    image: splunk/universalforwarder:7.0.0-monitor
+    hostname: splunk-forwarder
+    depends_on:
+      - splunk-enterprise
+    networks:
+      - splunk-backend       
+    deploy:
+        mode: global
+        placement:
+            constraints: [node.role==worker]
+    ports:
+      - "1514:1514"
+    environment:
+      - SPLUNK_USER=root
+      - SPLUNK_START_ARGS=--accept-license --answer-yes
+      - SPLUNK_FORWARD_SERVER=splunk-enterprise:9997
+      - SPLUNK_FORWARD_SERVER_ARGS=-method clone
+      - SPLUNK_ADD_1=udp 1514
+      - SPLUNK_ADD_2=monitor -sourcetype authlog -source /docker/log/auth.log
+      - SPLUNK_DEPLOYMENT_SERVER=splunk-enterprise:8089
+    volumes:
+      - splunk-etc:/opt/splunk/etc
+      - splunk-var:/opt/splunk/var
+      - /var/lib/docker/containers:/host/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/log:/docker/log:ro

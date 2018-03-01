@@ -1,0 +1,118 @@
+version: '3.3'
+
+volumes:
+  prometheus-metrics-data:
+  grafana-data:
+
+networks:
+  monitoring-backend:
+    driver: overlay
+    attachable: true
+
+configs:
+  prometheus.yml:
+    file: ./prometheus.yml    
+  nginx.conf:
+    file: ./nginx.conf    
+           
+services:
+
+  ########################################################################################################################
+  # Nginx Reverse Proxy to secure Prometheus
+  # This container needs to be run on 1 node in the swarm.    
+  # https://store.docker.com/images/nginx   
+  ########################################################################################################################    
+  monitoring_nginx:
+    image: gforghetti/monitoring_nginx:latest
+    hostname: monitoring_nginx
+    networks:
+      - monitoring-backend  
+    ports:
+      - "19090:19090"  
+    configs:
+      - source: nginx.conf
+        target: /etc/nginx/nginx.conf
+
+  ########################################################################################################################
+  # GUI Frontend for Prometheus
+  # This container needs to be run on 1 node in the swarm.    
+  # https://hub.docker.com/r/grafana/grafana/  
+  # https://github.com/grafana/grafana-docker    
+  ########################################################################################################################    
+  monitoring_grafana:
+    image: grafana/grafana:latest
+    hostname: monitoring_grafana
+    networks:
+      - monitoring-backend  
+    ports:
+      - "3000:3000"      
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=Passw0rd#
+    volumes:
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - monitoring_prometheus  
+  
+  ########################################################################################################################
+  # Prometheus - Systems and service monitoring system.
+  # It collects metrics from configured targets at given intervals, evaluates rule expressions,
+  # displays the results, and can trigger alerts if some condition is observed to be true.      
+  # This container needs to be run on 1 node in the swarm.
+  # https://hub.docker.com/r/prom/prometheus/
+  # https://github.com/prometheus/prometheus
+  ########################################################################################################################
+  monitoring_prometheus:
+    image: prom/prometheus:latest
+    hostname: monitoring_prometheus
+    networks:
+      - monitoring-backend  
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'            
+    volumes:
+      - prometheus-metrics-data:/prometheus
+    configs:
+      - source: prometheus.yml
+        target: /etc/prometheus/prometheus.yml  
+    depends_on:      
+      - monitoring_node_exporter
+      - monitoring_cadvisor
+
+  ########################################################################################################################
+  # node_exporter - collect system metrics like cpu/memory/storage usage.
+  # Prometheus will scrape the node exporters for the collected metrics.
+  # This container needs to be run on all nodes in the swarm.  
+  # https://hub.docker.com/r/prom/node-exporter/  
+  # https://github.com/prometheus/node_exporter
+  ######################################################################################################################## 
+  monitoring_node_exporter:
+    image: prom/node-exporter:latest
+    networks:
+      - monitoring-backend  
+    ports:
+      - "9100:9100"
+    deploy:
+      mode: global       
+      
+  ########################################################################################################################
+  # cAdvisor - collects, aggregates, processes about running containers.
+  # Prometheus will scrape the cAdvisor servers for the metrics.
+  # This container needs to be run on all nodes in the swarm. 
+  # https://hub.docker.com/r/google/cadvisor/
+  # https://github.com/google/cadvisor
+  ########################################################################################################################    
+  monitoring_cadvisor:
+    image: google/cadvisor:latest
+    networks:
+      - monitoring-backend  
+    ports:
+      - "8080:8080"
+    deploy:
+      mode: global      
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+
