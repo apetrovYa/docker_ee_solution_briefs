@@ -152,33 +152,35 @@ This is the link to a reference for Sphinx [restructured text](http://www.sphinx
     make clean && make html
     ```
 
-There is a Sphinx configuration file in your directory named conf.py.
+There is a Sphinx configuration file in your directory named **conf.py**.
 
- It includes the common/config.py file which contains the base configuration shared by all Solution Briefs.
+It includes the **./common/config.py** file which contains the base configuration shared by all Solution Briefs.
 
- Do not modify the config.py in this repo's `common` directory as it is shared by every Solution Brief and contains definitions so all of the Solution Briefs look the same when formatted to HTML or PDFs.
+Do not modify the  **./common/config.py** file in this repo as it is shared by every Solution Brief and contains definitions so all of the Solution Briefs look the same when formatted to HTML or PDFs.
 
- You should not need to modify the conf.py file in your own directory unless you want to build a PDF.
+You should not need to modify the **conf.py** file in your own directory unless you want to build a PDF.
  
- In that cased edit the conf.py file in your directory:
+In that cased edit the **conf.py** file in your directory:
    
    * Change `Docker_EE_Logging_using_Splunk_Enterprise` to a filename to match your Solution Brief. This name will be used to generate the PDF file name. Don't remove or change the `.tex` file extension!
    * Change `Docker EE Logging using Splunk Enterprise` to a descriptive name for your Solution Brief. This name will be used to generate the Header page in your PDF.
 
- Sample conf.py (before you edit it)
+Sample **conf.py** (before you edit it)
 
-   ```
+```text
    latex_documents = [
     (master_doc, 'Docker_EE_Logging_using_Splunk_Enterprise.tex', u'Docker EE Logging using Splunk Enterprise',
      u'Gary Forghetti', 'manual'),
    ]
-   ``` 
+``` 
+
 
 Then to make a PDF inside your directory for your Solution Brief:
 
-    ```bash
-    make clean && make latexpdf
-    ```
+```bash
+   make clean && make html
+```
+
 
 The PDF will be in the `_builds/latex` directory inside your Solution Brief directory.   
 
