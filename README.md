@@ -162,14 +162,14 @@ You should not need to modify the **conf.py** file in your own directory unless 
  
 In that cased edit the **conf.py** file in your directory:
    
-   * Change `Docker_EE_Logging_using_Splunk_Enterprise` to a filename to match your Solution Brief. This name will be used to generate the PDF file name. Don't remove or change the `.tex` file extension!
-   * Change `Docker EE Logging using Splunk Enterprise` to a descriptive name for your Solution Brief. This name will be used to generate the Header page in your PDF.
+   * Change `Sample_Solution_Brief` to a filename to match your Solution Brief. This name will be used to generate the PDF file name. Don't remove or change the `.tex` file extension!
+   * Change `Sample Solution Brief` to a descriptive name for your Solution Brief. This name will be used to generate the Header page in your PDF.
 
 Sample **conf.py** (before you edit it)
 
 ```text
    latex_documents = [
-    (master_doc, 'Docker_EE_Logging_using_Splunk_Enterprise.tex', u'Docker EE Logging using Splunk Enterprise',
+    (master_doc, 'Sample_Solution_Brief.tex', u'Sample Solution Brief',
      u'Gary Forghetti', 'manual'),
    ]
 ``` 

@@ -33,6 +33,6 @@ html_favicon = '../common/_static/favicon.ico'
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Docker_EE_Logging_using_Splunk_Enterprise.tex', u'Docker EE Logging using Splunk Enterprise',
+    (master_doc, 'Sample_Solution_Brief.tex', u'Sample Solution Brief',
      u'Gary Forghetti', 'manual'),
 ]
