@@ -24,7 +24,7 @@ Prometheus's main features are:
 The Prometheus ecosystem consists of multiple components, many of which are optional:
 
 * The main Prometheus server which scrapes and stores time series data
-* client libraries for instrumenting application code
+* Client libraries for instrumenting application code
 * A push gateway for supporting short-lived jobs
 * Special-purpose exporters for services like HAProxy, StatsD, Graphite, etc.
 * An alertmanager to handle alerts
