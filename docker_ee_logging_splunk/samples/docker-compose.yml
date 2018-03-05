@@ -3,6 +3,9 @@ version: '3.3'
 # Note: Do not put quotes around the SPLUNK environment variables!
 
 networks:
+  splunk-frontend:
+    driver: overlay
+    attachable: true
   splunk-backend:
     driver: overlay
     attachable: true
@@ -17,6 +20,7 @@ services:
     image: splunk/splunk:7.0.0-monitor
     hostname: splunk-enterprise
     networks:
+      - splunk-frontend  
       - splunk-backend  
     deploy:
         placement:

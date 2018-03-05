@@ -4,7 +4,7 @@ Generate logging data
 =====================
 
 Run the following **curl** command to cause the Apache HTTP Web Server container to generate logging data. Substitute ``docker-node-name`` with the hostname of
-the docker node where the Splunk Enterprise server service is running.
+any docker node in the swarm.
 
     .. code-block:: bash
 
@@ -17,7 +17,7 @@ the docker node where the Splunk Enterprise server service is running.
         <html><body><h1>It works!</h1></body></html>
 
 Run the following **curl** command to cause the Apache HTTP Web Server container to generate logging data. Substitute ``docker-node-name`` with the hostname of
-the docker node where the Splunk Enterprise server service is running.
+any docker node in the swarm.
 
     .. code-block:: bash
 

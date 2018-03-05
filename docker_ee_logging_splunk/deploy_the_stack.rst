@@ -13,6 +13,7 @@ Example output:
 
     .. code-block:: text
 
+        Creating network splunk_splunk-frontend
         Creating network splunk_splunk-backend
         Creating service splunk_splunk-enterprise
         Creating service splunk_splunk-forwarder
