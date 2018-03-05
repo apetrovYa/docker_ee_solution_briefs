@@ -12,7 +12,7 @@ any docker node in the swarm.
      
     Example output:
      
-    .. code-block:: text
+    .. code-block:: html
 
         <html><body><h1>It works!</h1></body></html>
 
@@ -25,7 +25,7 @@ any docker node in the swarm.
      
     Example output:
      
-    .. code-block:: text
+    .. code-block:: html
 
         <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
         <html><head>
