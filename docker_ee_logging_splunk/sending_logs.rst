@@ -3,7 +3,7 @@
 Send Docker container logs to the Splunk Stack
 ==============================================
 
-To test the Splunk **HTTP Event Collector** you can run the following **docker service create** command to start an Apache HTTP Web Server service with the `Splunk Docker Logging Driver <https://docs.docker.com/config/containers/logging/splunk/>`_. 
+To test the Splunk **HTTP Event Collector** you can run the following **docker service create** command on the swarm manager to start an Apache HTTP Web Server service with the `Splunk Docker Logging Driver <https://docs.docker.com/config/containers/logging/splunk/>`_. 
 Substitute ``splunk-http-event-collector-token`` with the previously created **HTTP Event Collector** token. Substitute ``docker-node-name`` with the hostname of any docker node in the swarm.
 
     .. code-block:: bash
