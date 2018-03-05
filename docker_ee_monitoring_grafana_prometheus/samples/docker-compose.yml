@@ -5,9 +5,12 @@ volumes:
   grafana-data:
 
 networks:
-  monitoring-backend:
+  monitoring-frontend:
     driver: overlay
     attachable: true
+  monitoring-backend:
+    driver: overlay
+    attachable: true    
 
 configs:
   prometheus.yml:
@@ -26,6 +29,7 @@ services:
     image: gforghetti/monitoring_nginx:latest
     hostname: monitoring_nginx
     networks:
+      - monitoring-frontend
       - monitoring-backend  
     ports:
       - "19090:19090"  
@@ -43,6 +47,7 @@ services:
     image: grafana/grafana:latest
     hostname: monitoring_grafana
     networks:
+      - monitoring-frontend
       - monitoring-backend  
     ports:
       - "3000:3000"      

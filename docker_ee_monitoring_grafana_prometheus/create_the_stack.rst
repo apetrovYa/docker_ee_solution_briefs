@@ -17,6 +17,7 @@ Example output:
 
     .. code-block:: text
 
+        Creating network prometheus_monitoring-frontend
         Creating network prometheus_monitoring-backend
         Creating service prometheus_monitoring_grafana
         Creating service prometheus_monitoring_prometheus

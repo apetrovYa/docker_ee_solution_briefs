@@ -33,6 +33,14 @@ Define Prometheus as a data source
             monitoring_nginx:
                 image: gforghetti/monitoring_nginx:latest
                 hostname: monitoring_nginx
+                networks:
+                    - monitoring-frontend
+                    - monitoring-backend  
+                ports:
+                    - "19090:19090"  
+                configs:
+                    - source: nginx.conf
+                      target: /etc/nginx/nginx.conf
 
         The port must be **19090** which was configured in Nginx.
 

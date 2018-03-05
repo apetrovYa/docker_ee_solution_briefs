@@ -12,18 +12,23 @@ The Grafana password is hardcoded in the :ref:`docker-compose.yml<grafana_promet
     **Grafana** service
 
     .. code-block:: yaml
-        :emphasize-lines: 10
+        :emphasize-lines: 11
 
         monitoring_grafana:
-          image: grafana/grafana:latest
-          hostname: monitoring_grafana
-          networks:
-            - monitoring-backend  
-          ports:
-            - "3000:3000"      
-          environment:
-             - GF_SECURITY_ADMIN_USER=admin
-             - GF_SECURITY_ADMIN_PASSWORD=Passw0rd#
+            image: grafana/grafana:latest
+            hostname: monitoring_grafana
+            networks:
+                - monitoring-frontend
+                - monitoring-backend  
+            ports:
+                - "3000:3000"      
+            environment:
+                - GF_SECURITY_ADMIN_USER=admin
+                - GF_SECURITY_ADMIN_PASSWORD=Passw0rd#
+            volumes:
+                - grafana-data:/var/lib/grafana
+            depends_on:
+                - monitoring_prometheus  
 
 ..  toctree::
     :hidden:
