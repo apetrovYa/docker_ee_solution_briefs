@@ -44,10 +44,6 @@ Wait about a minute for the Splunk stack to be created.
 
         docker service logs splunk_splunk-forwarder
 
-    .. code-block:: bash
-
-        docker service logs elk_kibana
-
 ..  toctree::
     :hidden:
     :titlesonly:
