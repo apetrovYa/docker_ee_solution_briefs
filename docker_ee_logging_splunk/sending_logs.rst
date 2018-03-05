@@ -7,10 +7,11 @@ To test the Splunk **HTTP Event Collector** you can run the following **docker s
 Substitute ``splunk-http-event-collector-token`` with the previously created **HTTP Event Collector** token. Substitute ``docker-node-name`` with the hostname of any docker node in the swarm.
 
     .. code-block:: bash
-        :emphasize-lines: 7,10  
+        :emphasize-lines: 8,11  
 
         docker service create --detach \
         --name apache \
+        --network splunk_splunk-backend
         --hostname apache.acme.com  \
         --publish 80:80 \
         --replicas 1 \
