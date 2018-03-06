@@ -24,7 +24,7 @@ Install the Outcold Collector as a Windows service. Run the following command fr
      
        | Outcold Solutions requires that the Collector service runs under the **LocalSystem** account or under another account which has the permissions to the system calls the Collector is issuing and has the permissions to access the docker file system. 
        | 
-       | In their documentation they explicitly specify the ``-Credential 'LocalSystem'`` argument on the ``New-Service``. If you do not specify the ``-Credential 'LocalSystem'`` argument the default is the **LocalSystem** account.
+       | In their documentation they explicitly specify the ``-Credential 'LocalSystem'`` argument on the ``New-Service`` command. If you do not specify the ``-Credential 'LocalSystem'`` argument the default is the **LocalSystem** account.
        |
        | However, If you specify the ``-Credential 'LocalSystem'`` argument on the ``New-Service`` command, windows will display a dialog box prompting you for the **LocalSystem** password. 
        |

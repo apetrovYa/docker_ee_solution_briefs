@@ -53,26 +53,26 @@ Install Collector
 
         copy .\monitoring-windows-containers\collector\collector.conf .\
 
-5. Copy the file **collector.exe** from the extracted Outcold install code directory to the directory you just created.
+6. Copy the file **collector.exe** from the extracted Outcold install code directory to the directory you just created.
 
     ..  code-block:: powershell
 
         copy .\monitoring-windows-containers\collector\collector.exe .\
 
-6. Now create a directory inside the **Collector** directory to hold the Outcold Collector database.
+7. Now create a directory inside the **Collector** directory to hold the Outcold Collector database.
 
     ..  code-block:: text
 
         mkdir D:\Collector\data      
 
-7. You can now remove the file **monitoring-windows-containers.zip** and the directory **monitoring-windows-containers** to save disk space.
+8. You can now remove the file **monitoring-windows-containers.zip** and the directory **monitoring-windows-containers** to save disk space.
 
     ..  code-block:: powershell
 
         Remove-Item .\monitoring-windows-containers.zip     
         Remove-Item .\monitoring-windows-containers -Recurse     
 
-8. List the contents of the Collector directory with the ls command.
+9. List the contents of the Collector directory with the ls command.
 
     ..  code-block:: powershell
 

@@ -9,8 +9,8 @@ Docker EE Logging using Elasticsearch, Logstash and Kibana
 
     overview
     docker_ee_version
-    swarm_configuration
     stack_configuration
+    swarm_configuration
     prerequisites
     installation_configuration
     volume_usage
