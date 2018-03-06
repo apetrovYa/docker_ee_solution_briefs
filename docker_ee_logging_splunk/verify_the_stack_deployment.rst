@@ -16,8 +16,8 @@ Wait about a minute for the Splunk stack to be created.
     .. code-block:: text
 
         ID                  NAME                       MODE                REPLICAS            IMAGE                                     PORTS
-        s9slvy69c2pq        splunk_splunk-forwarder    global              2/2                 splunk/universalforwarder:7.0.0-monitor   *:1514->1514/tcp
-        tta92fql42kf        splunk_splunk-enterprise   replicated          1/1                 splunk/splunk:7.0.0-monitor               *:8000->8000/tcp,*:8088->8088/tcp
+        3w0isjfwib18        splunk_splunk-forwarder    global              3/3                 splunk/universalforwarder:7.0.0-monitor   *:1514->1514/tcp
+        hm2i38qtvrvy        splunk_splunk-enterprise   replicated          1/1                 splunk/splunk:7.0.0-monitor               *:8000->8000/tcp,*:8088->8088/tcp
 
 2. Run the following **docker service ps** command on the swarm manager to display where the services are running and their statuses.
 
@@ -29,10 +29,11 @@ Wait about a minute for the Splunk stack to be created.
 
     .. code-block:: text
 
-        ID                  NAME                                                    IMAGE                                     NODE                DESIRED STATE       CURRENT STATE           ERROR                        PORTS
-        698tsinasc9z        splunk_splunk-forwarder.akh3ecyvt3y168gfjb2raxo7z       splunk/universalforwarder:7.0.0-monitor   worker2.acme.com    Running             Running 1 minutes ago
-        b60julm9ujhy        splunk_splunk-forwarder.gwkn7ydqvlzscvw1swfrxvhcs       splunk/universalforwarder:7.0.0-monitor   worker1             Running             Running 1 minutes ago
-        zgl5hcsscxmn        splunk_splunk-enterprise.1                              splunk/splunk:7.0.0-monitor               manager             Running             Running 1 minutes ago
+        ID                  NAME                                                    IMAGE                                     NODE                DESIRED STATE       CURRENT STATE                ERROR                        PORTS
+        eqfwf5j1xruv        splunk_splunk-forwarder.6dbmhj26ydctir5se6no0zewe       splunk/universalforwarder:7.0.0-monitor   worker3.acme.com    Running             Running about a minute ago
+        os3gfyk1iu0h        splunk_splunk-forwarder.34usz92cx71n6nj2ahum95ojr       splunk/universalforwarder:7.0.0-monitor   worker2.acme.com    Running             Running about a minute ago
+        prenu2lu25rs        splunk_splunk-forwarder.rdb0f9hgsi7533puaoi1mapln       splunk/universalforwarder:7.0.0-monitor   manager             Running             Running about a minute ago
+        p57pol9bb6fi        splunk_splunk-enterprise.1                              splunk/splunk:7.0.0-monitor               worker1             Running             Running about a minute ago
 
 3. Run the following **docker service logs** commands on the swarm manager to display the logs for the services and check them for errors.
 

@@ -3,7 +3,7 @@
 Docker EE Swarm Configuration
 =============================
 
-A Grafana/Prometheus stack will be deployed to the following 3 node Docker Swarm.
+A Grafana/Prometheus stack will be deployed to the following 4 node Docker Swarm.
 
 ..  image:: images/docker_swarm_configuration.png
 

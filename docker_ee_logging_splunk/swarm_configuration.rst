@@ -3,7 +3,7 @@
 Docker EE Swarm Configuration
 =============================
 
-A Splunk stack will be deployed to the following 3 node Docker Swarm.
+A Splunk stack will be deployed to the following 4 node Docker Swarm.
 
 ..  image:: images/docker_swarm_configuration.png
 

@@ -6,7 +6,7 @@ Prerequisites
 Docker swarm
 ------------
 
-A Docker swarm must be deployed and running.
+To run this Solution Brief a Docker swarm must be deployed and running.
 
 * For a test environment a minimum of 3 nodes is required.
 * For a production environment additional nodes should be deployed. 

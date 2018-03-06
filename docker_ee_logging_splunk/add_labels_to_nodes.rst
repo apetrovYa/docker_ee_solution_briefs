@@ -30,29 +30,30 @@ Follow the instructions below to add the labels to the nodes carefully.  Make su
     .. code-block:: text
 
         ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS
-        akh3ecyvt3y168gfjb2raxo7z     worker2.acme.com    Ready               Active
-        gwkn7ydqvlzscvw1swfrxvhcs     worker1             Ready               Active
-        kk1ncklruchfo5jpmoa7v4xhp *   manager             Ready               Active              Leader
+        34usz92cx71n6nj2ahum95ojr     worker2.acme.com    Ready               Active
+        6dbmhj26ydctir5se6no0zewe     worker3.acme.com    Ready               Active
+        pkydswz5708zvth3ok1migziq     worker1             Ready               Active
+        rdb0f9hgsi7533puaoi1mapln *   manager             Ready               Active              Leader
    
 2. Pick one node in the swarm and add a label to it so it will be chosen to run the **Splunk Enterprise server**.
 
-    In this Solution Brief the docker swarm the manager node will be designated as the node where the single **Splunk Enterprise server** service will run. 
-    In this example the **ID** of that node is ``kk1ncklruchfo5jpmoa7v4xhp``.
+    In this Solution Brief the docker swarm the worker1 node will be designated as the node where the single **Splunk Enterprise server** service will run. 
+    In this example the **ID** of that node is ``pkydswz5708zvth3ok1migziq``.
 
-    Run the following **docker node update** command to add the label ``splunk-node-type=enterprise-server`` to the node with the **ID** ``kk1ncklruchfo5jpmoa7v4xhp``.
+    Run the following **docker node update** command to add the label ``splunk-node-type=enterprise-server`` to the node with the **ID** ``pkydswz5708zvth3ok1migziq``.
 
     ..  code-block:: bash
 
-        docker node update --label-add 'splunk-node-type=enterprise-server' kk1ncklruchfo5jpmoa7v4xhp
+        docker node update --label-add 'splunk-node-type=enterprise-server' pkydswz5708zvth3ok1migziq
 
 3. Add a label to every other node in the swarm so they will be chosen to run a **Splunk Forwarder server** service.
 
     Run the command below to display the **IDs** of all nodes in the swarm, 
-    filter out the node with **ID** ``kk1ncklruchfo5jpmoa7v4xhp``, and then add the label ``splunk-node-type=forwarder-server`` to the remaining nodes.
+    filter out the node with **ID** ``pkydswz5708zvth3ok1migziq``, and then add the label ``splunk-node-type=forwarder-server`` to the remaining nodes.
 
     ..  code-block:: bash
 
-        for node in $(docker node ls -q | grep -v 'kk1ncklruchfo5jpmoa7v4xhp'); \
+        for node in $(docker node ls -q | grep -v 'pkydswz5708zvth3ok1migziq'); \
         do \
             docker node update $node --label-add 'splunk-node-type=forwarder-server'; \
         done
@@ -72,7 +73,8 @@ Follow the instructions below to add the labels to the nodes carefully.  Make su
 
         "enterprise-server"
         "forwarder-server"
-        "forwarder-server"      
+        "forwarder-server"
+        "forwarder-server"       
 
 ..  toctree::
     :hidden:

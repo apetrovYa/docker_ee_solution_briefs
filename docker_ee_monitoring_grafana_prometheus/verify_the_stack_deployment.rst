@@ -16,11 +16,11 @@ Wait about a minute for the Grafana/Prometheus Stack to be created.
     ..  code-block:: text
 
         ID                  NAME                                  MODE                REPLICAS            IMAGE                                PORTS
-        8lkr1k10n3k1        prometheus_monitoring_prometheus      replicated          1/1                 prom/prometheus:latest
-        f0w2opzilook        prometheus_monitoring_grafana         replicated          1/1                 grafana/grafana:latest               *:3000->3000/tcp
-        nljzxf3lyk4p        prometheus_monitoring_cadvisor        global              3/3                 google/cadvisor:latest               *:8080->8080/tcp
-        nn9ed9ns63cg        prometheus_monitoring_nginx           replicated          1/1                 gforghetti/monitoring_nginx:latest   *:19090->19090/tcp
-        rcd4pspbo2x1        prometheus_monitoring_node_exporter   global              3/3                 prom/node-exporter:latest            *:9100->9100/tcp
+        hie1o6s89mk7        prometheus_monitoring_cadvisor        global              4/4                 google/cadvisor:latest               *:8080->8080/tcp
+        mwd068x8winp        prometheus_monitoring_nginx           replicated          1/1                 gforghetti/monitoring_nginx:latest   *:19090->19090/tcp
+        q4el1tam91gz        prometheus_monitoring_prometheus      replicated          1/1                 prom/prometheus:latest
+        scov4jrjdfu2        prometheus_monitoring_node_exporter   global              4/4                 prom/node-exporter:latest            *:9100->9100/tcp
+        vmmhcn2uelz5        prometheus_monitoring_grafana         replicated          1/1                 grafana/grafana:latest               *:3000->3000/tcp
 
 2. Run the following **docker service ps** command on the swarm manager to display where the services are running and their statuses.
 
@@ -32,16 +32,18 @@ Wait about a minute for the Grafana/Prometheus Stack to be created.
 
     ..  code-block:: text
 
-        ID                  NAME                                                            IMAGE                                NODE                DESIRED STATE       CURRENT STATE                ERROR               PORTS
-        p6x5viady3wb        prometheus_monitoring_node_exporter.borj0fhi37ecii1q7jub6sv8o   prom/node-exporter:latest            worker2             Running             Running 58 seconds ago
-        douj51t6ahik        prometheus_monitoring_node_exporter.u4p80of52ks9m547vzsprfmwp   prom/node-exporter:latest            worker1             Running             Running about a minute ago
-        qbk26pmngqbb        prometheus_monitoring_node_exporter.vuphc2eu6jtf0lway74owo2q8   prom/node-exporter:latest            manager             Running             Running 54 seconds ago
-        x2x1crewimef        prometheus_monitoring_cadvisor.borj0fhi37ecii1q7jub6sv8o        google/cadvisor:latest               worker2             Running             Running about a minute ago
-        qu1izkl7ntpc        prometheus_monitoring_cadvisor.u4p80of52ks9m547vzsprfmwp        google/cadvisor:latest               worker1             Running             Running about a minute ago
-        jb8s5qt3n4qm        prometheus_monitoring_cadvisor.vuphc2eu6jtf0lway74owo2q8        google/cadvisor:latest               manager             Running             Running 58 seconds ago
-        hdl7blhjdasq        prometheus_monitoring_prometheus.1                              prom/prometheus:latest               manager             Running             Running 55 seconds ago
-        j5ebf76vb95n        prometheus_monitoring_grafana.1                                 grafana/grafana:latest               worker2             Running             Running 50 seconds ago
-        kycr2i28cr2t        prometheus_monitoring_nginx.1                                   gforghetti/monitoring_nginx:latest   manager             Running             Running 52 seconds ago
+        ID                  NAME                                                            IMAGE                                NODE                DESIRED STATE       CURRENT STATE           ERROR               PORTS
+        b4l9tz80wh2c        prometheus_monitoring_cadvisor.pkydswz5708zvth3ok1migziq        google/cadvisor:latest               worker1             Running             Running 1 minutes ago
+        phjhu4fc8fen        prometheus_monitoring_cadvisor.rdb0f9hgsi7533puaoi1mapln        google/cadvisor:latest               manager             Running             Running 1 minutes ago
+        t5xm7m30kumk        prometheus_monitoring_cadvisor.6dbmhj26ydctir5se6no0zewe        google/cadvisor:latest               worker3.acme.com    Running             Running 1 minutes ago
+        movwpnotn9fe        prometheus_monitoring_cadvisor.34usz92cx71n6nj2ahum95ojr        google/cadvisor:latest               worker2.acme.com    Running             Running 1 minutes ago
+        q51uyr1rqoqk        prometheus_monitoring_node_exporter.6dbmhj26ydctir5se6no0zewe   prom/node-exporter:latest            worker3.acme.com    Running             Running 1 minutes ago
+        oh6en98g60aj        prometheus_monitoring_node_exporter.34usz92cx71n6nj2ahum95ojr   prom/node-exporter:latest            worker2.acme.com    Running             Running 1 minutes ago
+        uf990f56n7is        prometheus_monitoring_node_exporter.pkydswz5708zvth3ok1migziq   prom/node-exporter:latest            worker1             Running             Running 1 minutes ago
+        0id5i3v0xj70        prometheus_monitoring_node_exporter.rdb0f9hgsi7533puaoi1mapln   prom/node-exporter:latest            manager             Running             Running 1 minutes ago
+        sixswn6paq8n        prometheus_monitoring_prometheus.1                              prom/prometheus:latest               worker2.acme.com    Running             Running 1 minutes ago
+        r7lp2av2hg5h        prometheus_monitoring_grafana.1                                 grafana/grafana:latest               worker3.acme.com    Running             Running 1 minutes ago
+        72hdx9tcdlgz        prometheus_monitoring_nginx.1                                   gforghetti/monitoring_nginx:latest   manager             Running             Running 1 minutes ago
 
 3. Run the following **docker service logs** commands on the swarm manager to display the logs for the services and check them for errors.
 
