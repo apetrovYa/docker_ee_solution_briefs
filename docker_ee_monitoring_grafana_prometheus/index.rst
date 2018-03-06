@@ -13,6 +13,7 @@ Monitoring Docker EE Containers using Grafana and Prometheus
     swarm_configuration
     prerequisites
     volume_usage
+    installation_configuration
     deploy_the_stack
     verify_the_stack_deployment
     login_to_prometheus
