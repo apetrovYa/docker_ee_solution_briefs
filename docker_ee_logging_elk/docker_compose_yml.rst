@@ -4,8 +4,8 @@
 
     \newpage
 
-docker-compose.yml file
-=======================
+Download the docker-compose.yml file
+====================================
 
 This is the sample **docker-compose.yml** file which will be used to bring up the Elastic stack. 
 

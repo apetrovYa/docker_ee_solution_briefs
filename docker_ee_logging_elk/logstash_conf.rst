@@ -4,8 +4,8 @@
 
     \newpage
 
-logstash.conf file
-==================
+Download the logstash.conf file
+===============================
 
 This is a sample **Logstash.conf** file which configures logstash. This file must exist in the same directory as the :ref:`docker-compose.yml<elk_docker_compose_yml>` file. 
 

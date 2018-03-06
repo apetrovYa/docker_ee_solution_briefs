@@ -16,10 +16,10 @@ Wait about a minute for the Elastic Stack to be created.
     ..  code-block:: text
 
         ID                  NAME                  MODE                REPLICAS            IMAGE                                                          PORTS
-        45w4jhc02cqg        elk_elastic-search    replicated          1/1                 docker.elastic.co/elasticsearch/elasticsearch-platinum:6.2.2   *:9200->9200/tcp
-        hydi27jhka4o        elk_kibana            replicated          1/1                 docker.elastic.co/kibana/kibana:6.2.2                          *:5601->5601/tcp
-        iqd4d355j2y9        elk_logstash          replicated          1/1                 docker.elastic.co/logstash/logstash:6.2.2                      *:5000->5000/tcp
-        uwn3o7w63eb9        elk_elastic-search2   replicated          1/1                 docker.elastic.co/elasticsearch/elasticsearch-platinum:6.2.2
+        cqxfmyrzmv2i        elk_elastic-search2   replicated          1/1                 docker.elastic.co/elasticsearch/elasticsearch-platinum:6.2.2
+        he4icrldcvgh        elk_logstash          replicated          1/1                 docker.elastic.co/logstash/logstash:6.2.2                      *:5000->5000/tcp
+        im8ve6gr6y88        elk_elastic-search    replicated          1/1                 docker.elastic.co/elasticsearch/elasticsearch-platinum:6.2.2   *:9200->9200/tcp
+        ivaeoa627rfy        elk_kibana            replicated          1/1                 docker.elastic.co/kibana/kibana:6.2.2                          *:5601->5601/tcp
 
 2. Run the following **docker service ps** command on the swarm manager to display where the services are running and their statuses.
 
@@ -31,11 +31,11 @@ Wait about a minute for the Elastic Stack to be created.
 
     ..  code-block:: text
 
-        ID                  NAME                    IMAGE                                                          NODE                DESIRED STATE       CURRENT STATE           ERROR               PORTS
-        ye8ddkb8a959        elk_elastic-search.1    docker.elastic.co/elasticsearch/elasticsearch-platinum:6.2.2   manager             Running             Running 2 minutes ago
-        3b2p998xhpi0        elk_kibana.1            docker.elastic.co/kibana/kibana:6.2.2                          worker2             Running             Running 2 minutes ago
-        yliof9n1jlod        elk_logstash.1          docker.elastic.co/logstash/logstash:6.2.2                      manager             Running             Running 2 minutes ago
-        zee3nry4injj        elk_elastic-search2.1   docker.elastic.co/elasticsearch/elasticsearch-platinum:6.2.2   worker2             Running             Running 2 minutes ago
+        ID                  NAME                    IMAGE                                                          NODE                DESIRED STATE       CURRENT STATE                ERROR               PORTS
+        pscyqo4zseue        elk_kibana.1            docker.elastic.co/kibana/kibana:6.2.2                          manager             Running             Running 42 seconds ago
+        s4pw484fjwyn        elk_logstash.1          docker.elastic.co/logstash/logstash:6.2.2                      worker3.acme.com    Running             Running about a minute ago
+        8oq72raczrn0        elk_elastic-search2.1   docker.elastic.co/elasticsearch/elasticsearch-platinum:6.2.2   manager             Running             Running about a minute ago
+        hepts5wfukr6        elk_elastic-search.1    docker.elastic.co/elasticsearch/elasticsearch-platinum:6.2.2   worker2.acme.com    Running             Running about a minute ago
 
 3. Run the following **docker service logs** commands on the swarm manager to display the logs for the services and check them for errors.
 
@@ -68,17 +68,17 @@ Wait about a minute for the Elastic Stack to be created.
     ..  code-block:: json
 
         {
-            "name" : "Shd_IQn",
+            "name" : "NYEH5ue",
             "cluster_name" : "docker-cluster",
-            "cluster_uuid" : "BBQsv2KnSeehMwXTMeH5Jw",
+            "cluster_uuid" : "JULr1SMCRMmXYYOJaA5lGw",
             "version" : {
-                "number" : "6.2.2",
-                "build_hash" : "10b1edd",
-                "build_date" : "2018-02-16T19:01:30.685723Z",
-                "build_snapshot" : false,
-                "lucene_version" : "7.2.1",
-                "minimum_wire_compatibility_version" : "5.6.0",
-                "minimum_index_compatibility_version" : "5.0.0"
+              "number" : "6.2.2",
+              "build_hash" : "10b1edd",
+              "build_date" : "2018-02-16T19:01:30.685723Z",
+              "build_snapshot" : false,
+              "lucene_version" : "7.2.1",
+              "minimum_wire_compatibility_version" : "5.6.0",
+              "minimum_index_compatibility_version" : "5.0.0"
             },
             "tagline" : "You Know, for Search"
         }
@@ -102,8 +102,8 @@ Wait about a minute for the Elastic Stack to be created.
             "timed_out": false,
             "number_of_nodes": 2,
             "number_of_data_nodes": 2,
-            "active_primary_shards": 4,
-            "active_shards": 8,
+            "active_primary_shards": 7,
+            "active_shards": 14,
             "relocating_shards": 0,
             "initializing_shards": 0,
             "unassigned_shards": 0,

@@ -3,7 +3,7 @@
 Docker EE Swarm Configuration
 =============================
 
-An Elasticsearch, Logstash and Kibana stack will be deployed to the following 3 node Docker Swarm.
+An Elasticsearch, Logstash and Kibana stack will be deployed to the following 4 node Docker Swarm.
 
 ..  image:: images/docker_swarm_configuration.png
 
