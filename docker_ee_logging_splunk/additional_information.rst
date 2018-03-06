@@ -21,8 +21,8 @@ Further Reading & Contact
 * `Splunk Enterprise Docker Image <https://hub.docker.com/r/splunk/splunk/>`_
 * `Splunk Universal Forwarder Docker Image <https://hub.docker.com/r/splunk/universalforwarder/>`_
 * `Getting data into Splunk <http://docs.splunk.com/Documentation/Splunk/7.0.2/Data/WhatSplunkcanmonitor>`_
-* `Splunk Docker Logging Driver <https://docs.docker.com/config/containers/logging/splunk/>`_
-* `Splunk Docker Logging Driver for Docker <https://www.splunk.com/blog/2015/12/16/splunk-logging-driver-for-docker.html>`_
+* `Splunk Docker Logging Driver <https://docs.docker.com/config/containers/logging/splunk/>`_ (from Docker documentation)
+* `Splunk Docker Logging Driver for Docker <https://www.splunk.com/blog/2015/12/16/splunk-logging-driver-for-docker.html>`_ (from Splunk documentation)
 * `Splunk Community <https://www.splunk.com/en_us/community.html>`_
 
 ..  toctree::

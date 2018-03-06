@@ -11,8 +11,6 @@ This solution brief will deploy an Elastic stack consisting of the following doc
 
 The docker images for all services are provided by `Elastic <https://www.docker.elastic.co/>`_.
 
-An example will be shown on how to use the `Docker Syslog logging driver <https://docs.docker.com/config/containers/logging/syslog/>`_ to capture the logs from Docker containers and send them to the Elastic stack.
-
 ..  toctree::
     :hidden:
     :titlesonly:

@@ -3,7 +3,7 @@
 Docker Monitoring
 ==================
 
-The Splunk images whose tags are suffixed with **-monitor** come with built-in Docker Monitoring. I have used those docker images in this Solution Brief.
+The Splunk images whose tags are suffixed with **-monitor** come with built-in Docker Monitoring. These docker images are been used this Solution Brief.
 
 The Splunk Enterprise docker image installs the **Splunk Docker Monitoring App** which has dashboards to help you analyze collected logs and docker information such as stats, events,
 tops, and inspect from your running images.

@@ -11,6 +11,8 @@ Docker EE Logging using Splunk Enterprise
     docker_ee_version
     stack_configuration
     swarm_configuration
+    prerequisites
+    add_labels_to_nodes
     volume_usage
     docker_compose_yml
     deploy_the_stack

@@ -16,7 +16,7 @@ any docker node in the swarm.
 
         <html><body><h1>It works!</h1></body></html>
 
-Run the following **curl** command to cause the Apache HTTP Web Server container to generate logging data. Substitute ``docker-node-name`` with the hostname of
+Run the following **curl** command to cause the Apache HTTP Web Server container to generate more logging data. Substitute ``docker-node-name`` with the hostname of
 any docker node in the swarm.
 
     ..  code-block:: bash

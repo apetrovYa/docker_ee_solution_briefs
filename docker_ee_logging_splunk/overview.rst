@@ -3,6 +3,9 @@
 Solution Brief Overview
 =======================
 
+Splunk Overview
+---------------
+
 `Splunk <https://www.splunk.com/>`_ is a software platform to gather, store, search, analyze and visualize the machine-generated
 data gathered from the websites, applications, databases, sensors, devices etc. which make up your IT
 infrastructure and business.
