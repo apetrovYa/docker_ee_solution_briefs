@@ -62,19 +62,19 @@ Follow the instructions below to add the labels to the nodes carefully.  Make su
 
     ..  code-block:: bash
 
-        docker node ls -q | xargs docker node inspect | jq -r '.[].Spec.Labels' | grep 'splunk-node-type' | sort | awk '{print $2}'
+        docker node ls -q | xargs docker node inspect | jq -r '.[] | .Spec.Labels."splunk-node-type", .Description.Hostname' | paste -sd ' \n' | sort
 
-    You should see one entry for **enterprise-server**, and as many entries for **enterprise-forwarder** as the number of remaining nodes in your swarm.
+    You should see one entry for **enterprise-server**, and as many entries for **forwarder-server** as the number of remaining nodes in your swarm.
 
     Example output:
 
     ..  code-block:: text
         :emphasize-lines: 1
-
-        "enterprise-server"
-        "forwarder-server"
-        "forwarder-server"
-        "forwarder-server"       
+        
+        enterprise-server worker1.acme.com
+        forwarder-server manager.acme.com
+        forwarder-server worker2.acme.com
+        forwarder-server worker3.acme.com
 
 ..  toctree::
     :hidden:

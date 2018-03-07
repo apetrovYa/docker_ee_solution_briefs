@@ -29,6 +29,8 @@ html_static_path = ['../common/_static']
 # pixels large.
 html_favicon = '../common/_static/favicon.ico'
 
+project = u'Docker EE Logging using Splunk Enterprise'
+
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
